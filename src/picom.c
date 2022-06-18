@@ -803,6 +803,11 @@ static struct managed_win *paint_preprocess(session_t *ps, bool *fade_running) {
 			}
 		}
 
+        /* if (w->base.id == 0x03800003) { */
+        if (w->role && strncmp(w->role, "browser", 7) == 0) {
+          unredir_possible = true;
+        }
+
 		// Unredirect screen if some window is requesting compositor bypass, even
 		// if that window is not on the top.
 		if (ps->o.unredir_if_possible && win_is_bypassing_compositor(ps, w) &&

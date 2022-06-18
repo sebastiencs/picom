@@ -950,6 +950,7 @@ static void win_determine_shadow(session_t *ps, struct managed_win *w) {
 		}
 	}
 
+	/* win_set_shadow(ps, w, shadow_new); */
 	win_set_shadow(ps, w, shadow_new);
 }
 
@@ -1151,6 +1152,35 @@ void win_on_factor_change(session_t *ps, struct managed_win *w) {
 
 	w->reg_ignore_valid = false;
 }
+
+/* void win_on_factor_change(session_t *ps, struct managed_win *w) { */
+/* 	log_debug("Window %#010x (%s) factor change", w->base.id, w->name); */
+/* 	// Focus needs to be updated first, as other rules might depend on the focused */
+/* 	// state of the window */
+/* 	win_update_focused(ps, w); */
+
+/* 	/\* win_determine_shadow(ps, w); *\/ */
+/* 	/\* win_determine_clip_shadow_above(ps, w); *\/ */
+/* 	/\* win_determine_invert_color(ps, w); *\/ */
+/* 	/\* win_determine_blur_background(ps, w); *\/ */
+/* 	/\* win_determine_rounded_corners(ps, w); *\/ */
+/* 	/\* w->mode = win_calc_mode(w); *\/ */
+/* 	log_debug("Window mode changed to %d", w->mode); */
+/* 	/\* win_update_opacity_rule(ps, w); *\/ */
+/* 	/\* if (w->a.map_state == XCB_MAP_STATE_VIEWABLE) { *\/ */
+/* 	/\* 	w->paint_excluded = c2_match(ps, w, ps->o.paint_blacklist, NULL); *\/ */
+/* 	/\* } *\/ */
+/* 	/\* if (w->a.map_state == XCB_MAP_STATE_VIEWABLE) { *\/ */
+/* 	/\* 	w->unredir_if_possible_excluded = *\/ */
+/* 	/\* 	    c2_match(ps, w, ps->o.unredir_if_possible_blacklist, NULL); *\/ */
+/* 	/\* } *\/ */
+
+/* 	/\* w->fade_excluded = c2_match(ps, w, ps->o.fade_blacklist, NULL); *\/ */
+
+/* 	/\* win_update_opacity_target(ps, w); *\/ */
+
+/* 	w->reg_ignore_valid = false; */
+/* } */
 
 /**
  * Update cache data in struct _win that depends on window size.
